@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "CEO AI Agent",
+  "name_for_model": "ceo_ai_agent",
+  "description_for_human": "Automates business decisions, video publishing, and Notion updates.",
+  "description_for_model": "CEO agent that uploads videos to YouTube, reports actions to Notion, and executes business workflows.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://ceo-ai-agent.onrender.com/openapi.json"
+  },
+  "logo_url": "https://ceo-ai-agent.onrender.com/logo.png",
+  "contact_email": "support@ceoai.com",
+  "legal_info_url": "https://ceoai.com/legal"
+}
