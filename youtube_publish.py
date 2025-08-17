@@ -1,5 +1,7 @@
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
+import re
+import urllib.parse
 
 def publish_to_youtube(video_file_path, title, description, tags=[]):
     SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
@@ -26,4 +28,8 @@ def publish_to_youtube(video_file_path, title, description, tags=[]):
     )
 
     response = request.execute()
-    return f"https://youtube.com/watch?v={response['id']}"
+    video_id = response.get('id', '')
+    # Validate the video id to ensure it contains only safe characters
+    if not re.match(r'^[A-Za-z0-9_-]{11}$', video_id):
+        raise ValueError("Invalid video id received from YouTube API")
+    return "https://youtube.com/watch?" + urllib.parse.urlencode({'v': video_id})
