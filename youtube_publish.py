@@ -32,4 +32,4 @@ def publish_to_youtube(video_file_path, title, description, tags=[]):
     # Validate the video id to ensure it contains only safe characters
     if not re.match(r'^[A-Za-z0-9_-]{11}$', video_id):
         raise ValueError("Invalid video id received from YouTube API")
-    return "https://youtube.com/watch?v=" + urllib.parse.quote(video_id, safe='')
+    return "https://youtube.com/watch?" + urllib.parse.urlencode({'v': video_id})
